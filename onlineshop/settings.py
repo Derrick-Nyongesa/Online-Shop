@@ -142,3 +142,6 @@ cloudinary.config(
   api_key = config("CLOUDINARY_KEY"), 
   api_secret = config("CLOUDINARY_SECRET") 
 )
+
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/accounts/login/'

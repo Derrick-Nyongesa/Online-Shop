@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load bootstrap4 %}
+{% load cloudinary %}
 
 {% block content %}
 <style media="screen">
@@ -51,20 +52,20 @@
   <div style="padding-left:300px;" class="container">
   
           <div class="col-sm-2 col-md-2">
-              <img src=""   alt="profile pic" class="img-rounded img-responsive" />
+            <span>{% cloudinary user.profile.profile_picture format="jpg" width=180 height=180 crop="fill"  %}</span>
           </div>
           <div class="col-sm-4 col-md-4">
               <blockquote>
-                  <p>{{request.user}}</p> <small><cite title="Source Title">{{user.location}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
+                  <p>{{request.user}}</p> <small><cite title="Source Title">{{user.profile.location}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
               </blockquote>
-              <p> <i class="glyphicon glyphicon-phone"></i>{{user.phone_number}}
+              <p> <i class="glyphicon glyphicon-phone"></i>{{user.profile.phone_number}}
               </p>
           </div>
   
   </div>
   <br>
   <div style="text-align: center;">
-    <a href=""><button class="button" ><span>Edit Profile </span></button></a>
+    <a href="{% url 'update' user.username  %}"><button class="button" ><span>Update Profile </span></button></a>
   </div>
   <br><br><br><br><br><br>
 {% endblock %}

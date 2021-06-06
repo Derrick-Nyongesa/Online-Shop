@@ -5,3 +5,9 @@ from django.contrib.auth.decorators import login_required
 @login_required (login_url='/accounts/login/')
 def index(request):
     return render(request, 'index.html')
+
+
+@login_required(login_url='/accounts/login/')
+def profile(request, username):
+
+    return render(request, 'profile.html')

@@ -10,7 +10,7 @@ class Profile(models.Model):
     #name = models.CharField(blank=True, max_length=120)
     profile_picture = CloudinaryField('image',null=True, default='default.png')
     location = models.CharField(max_length=100, blank=True)
-    phone_number = models.IntegerField(null=False)
+    phone_number = models.IntegerField(null=True)
 
     @receiver(post_save, sender=User)
     def create_user_profile(sender, instance, created, **kwargs):

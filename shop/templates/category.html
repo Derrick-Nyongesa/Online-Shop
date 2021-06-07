@@ -8,9 +8,9 @@
 <div class="container">
     <div class="row">
         {% for product in products %}
-        <div class="col-sm-12 col-md-12 col-lg-4 card mb-4">
+        <div class="col-sm-12 col-md-12 col-lg-4 card mb-4 products">
             {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
-            <h5>{{product.name}}</h5>
+            <h5 class="highlight">{{product.name}}</h5>
             <h6>Ksh. {{product.price}}</h6>
         </div>
         {% endfor %}

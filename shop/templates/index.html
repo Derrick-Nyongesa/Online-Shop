@@ -11,6 +11,7 @@
             href="/category/{{category.name}}">{{category.name}}</a>
         {%endfor%}
     </div>
+    <hr>
    
     <div class="container">
         <div class="row">
@@ -18,7 +19,7 @@
             <div class="col-sm-12 col-md-12 col-lg-5 card mb-4 products">
                 {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
                 <h5 class="highlight">{{product.name}}</h5>
-                <h6>Ksh. <strong>{{product.price}}</strong></h6>
+                <h6 class="white">Ksh. <strong>{{product.price}}</strong></h6>
             </div>
             {% endfor %}
         </div>

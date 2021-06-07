@@ -96,4 +96,9 @@ class Feedback(models.Model):
         return self.title
 
 
+class SubscriptionRecipients(models.Model):
+    name = models.CharField(max_length=50)
+    email = models.EmailField()
+
+
     

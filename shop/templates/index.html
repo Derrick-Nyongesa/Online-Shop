@@ -6,12 +6,26 @@
 {% block content %}
 <div class="container">
     <h1 class="text-center">Online Shopping with Albany Kenya - Kenya's No 1 Online Store</h1>
-    <div class="categories">
-        {% for category in categories %}
-        <a class="btn btn-outline-danger"
-            href="/category/{{category.name}}">{{category.name}}</a>
-        {%endfor%}
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <h5 class="text-center">SUBSCRIBE to Albany eShop</h5>
+            <form  action="{%url 'homePage'%}" method="post">
+                {%csrf_token%}
+            
+                {% bootstrap_form form layout='inline' %}
+                <input type="submit" value="Subscribe">
+            </form>
+        </div>
+        <div class="col-md-12 col-lg-8">
+            <div class="categories">
+                {% for category in categories %}
+                <a class="btn btn-outline-danger"
+                    href="/category/{{category.name}}">{{category.name}}</a>
+                {%endfor%}
+            </div>
+        </div>
     </div>
+   
     <hr>
    
     <div class="container">

@@ -20,3 +20,8 @@ class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
         fields = ['title', 'feedback']
+
+
+class SubscriptionForm(forms.Form):
+    name = forms.CharField(label='Name', max_length=50)
+    email = forms.EmailField(label='Email')

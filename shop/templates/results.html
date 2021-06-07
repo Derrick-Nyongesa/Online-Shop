@@ -7,6 +7,9 @@
 <div class="container">
     {% if results %}
         <h2 class="highlight text-center">Found {{results.count}} items</h2>
+        
+    {{ message }}
+    
 
         <div class="row">
             {% for product in results %}
@@ -18,9 +21,10 @@
                 </div>
             </a>
             {% endfor %}
-        </div>
+        
         
         {% else %}
             <h2 class="highlight text-center">Found 0 items with the name you searched </h2>
     {% endif %}
+</div>
 {% endblock %}

@@ -2,6 +2,8 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
+from django.http import HttpResponse,Http404,HttpResponseRedirect
+from .email import send_welcome_email
 
 # Create your views here.
 @login_required (login_url='/accounts/login/')
@@ -9,8 +11,19 @@ def index(request):
     products = Product.objects.all()
     categories = Category.get_categories()
     title = "Home"
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            recipient = SubscriptionRecipients(name = name,email =email)
+            recipient.save()
+            send_welcome_email(name,email)
+            HttpResponseRedirect('homePage')
+    else:
+        form = SubscriptionForm()
 
-    return render(request, 'index.html', {'products':products, "title":title, 'categories':categories})
+    return render(request, 'index.html', {'products':products, "title":title, 'categories':categories,'form':form})
 
 
 @login_required(login_url='/accounts/login/')
@@ -67,7 +80,7 @@ def search(request):
         name = request.GET.get("name")
         results = Product.objects.filter(name__icontains=name).all()
         print(results)
-        message = f'name'
+        message = f'found results'
         
         return render(request, 'results.html', {'results':results, 'message': message})
     else:

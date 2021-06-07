@@ -31,6 +31,11 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def get_categories(cls):
+        categories = Category.objects.all()
+        return categories
+
     def save_category(self):
         self.save()
 
@@ -61,6 +66,11 @@ class Product(models.Model):
 
     def delete_product(self):
         self.delete()
+
+    @classmethod
+    def filter_by_category(cls, category):
+        product = Product.objects.filter(category__name=category).all()
+        return product
 
 
     

@@ -6,11 +6,6 @@
 {% block content %}
 <h1>Online Shop</h1>
 <div class="container">
-    {% for category in categories %}
-    <a class="btn btn-primary"
-        href="/category/{{category.name}}">{{category.name}}</a>
-    {%endfor%}
-
     <div class="row">
         {% for product in products %}
         <div class="col-sm-12 col-md-12 col-lg-4 card mb-4">
@@ -22,4 +17,3 @@
     </div>
 </div>
 {% endblock %}
-

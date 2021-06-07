@@ -42,3 +42,11 @@ hr{
 h2{
     font-weight: bold;
 }
+
+.footer2{
+    padding-top: 20px;
+}
+
+li{
+    list-style: none;
+}

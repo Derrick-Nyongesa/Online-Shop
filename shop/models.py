@@ -47,7 +47,12 @@ class Product(models.Model):
     name= models.CharField(max_length=300)
     image= CloudinaryField('image',null=True)
     description= models.TextField()
+    Specifications = models.TextField(null=True)
+    Brand = models.CharField(max_length=50,null=True)
     price = models.PositiveIntegerField()
+    image1= CloudinaryField('image',null=True, blank=True)
+    image2= CloudinaryField('image',null=True, blank=True)
+    image3= CloudinaryField('image',null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,default='')
 

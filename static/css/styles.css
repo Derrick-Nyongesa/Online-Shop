@@ -31,3 +31,14 @@ hr{
 
 }
 
+.product{
+    background-color: white;
+}
+
+.information{
+    color: #4cc9f0;
+}
+
+h2{
+    font-weight: bold;
+}

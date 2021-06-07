@@ -4,9 +4,10 @@
 {% load cloudinary %}
 
 {% block content %}
-<h1>Online Shop</h1>
 <div class="container">
+    <h2 class="text-center highlight">{{products.count}} item(s) available</h2>
     <div class="row">
+        
         {% for product in products %}
         <div class="col-sm-12 col-md-12 col-lg-4 card mb-4 products">
             {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}

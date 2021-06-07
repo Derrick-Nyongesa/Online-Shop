@@ -4,6 +4,34 @@
 {% load cloudinary %}
 
 {% block content %}
-<h2>{{product.name}}</h2>
+<div class="">
+    <div class="product">
+        <div class="row">
+            <div class="col-md-12 col-lg-4 product">
+                {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
+            </div>
+            <div class="col-md-12 col-lg-8 card mb-8">
+                <h3 class="highlight">{{product.name}}</h3>
+                <h5>Brand: <strong>{{product.Brand}}</strong></h5>
+                <h2 class="text-center"><strong>Ksh. {{product.price}}</strong> </h2>
+                <a href="" class="btn btn-outline-info">Add to Cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="information">PRODUCT DETAILS</h2><br>
+    <p class="information">{{product.description}}</p><br><br><br>
+    <h2 class="information">TECHNICAL SPECIFICATIONS</h2>
+    <p class="information">{{product.Specifications}}</p>
+    <hr>
+    <div>
+        {% cloudinary product.image1 format="jpg" width=300 height=200 crop="" %}
+        {% cloudinary product.image2 format="jpg" width=300 height=200 crop="" %}
+        {% cloudinary product.image3 format="jpg" width=300 height=200 crop="" %}
+    </div>
+
+</div>
 {% endblock %}
 

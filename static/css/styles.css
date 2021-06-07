@@ -5,5 +5,23 @@ h1{
 }
 
 body{
-    background-color: #ccc5b9;
+    background-color: #000000;
+}
+
+.categories{
+    background-color: #4cc9f0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 200px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.highlight{
+    font-weight: bold;
+    color: #e5383b;
+}
+
+.products{
+    margin: 40px;
 }

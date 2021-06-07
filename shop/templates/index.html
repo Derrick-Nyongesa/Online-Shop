@@ -4,22 +4,26 @@
 {% load cloudinary %}
 
 {% block content %}
-<h1>Online Shop</h1>
 <div class="container">
-    {% for category in categories %}
-    <a class="btn btn-primary"
-        href="/category/{{category.name}}">{{category.name}}</a>
-    {%endfor%}
-
-    <div class="row">
-        {% for product in products %}
-        <div class="col-sm-12 col-md-12 col-lg-4 card mb-4">
-            {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
-            <h5>{{product.name}}</h5>
-            <h6>Ksh. {{product.price}}</h6>
-        </div>
-        {% endfor %}
+    <div class="categories">
+        {% for category in categories %}
+        <a class="btn btn-outline-danger"
+            href="/category/{{category.name}}">{{category.name}}</a>
+        {%endfor%}
     </div>
+   
+    <div class="container">
+        <div class="row">
+            {% for product in products %}
+            <div class="col-sm-12 col-md-12 col-lg-5 card mb-4 products">
+                {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
+                <h5 class="highlight">{{product.name}}</h5>
+                <h6>Ksh. <strong>{{product.price}}</strong></h6>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
 </div>
 {% endblock %}
 

@@ -30,6 +30,45 @@
         {% cloudinary product.image1 format="jpg" width=300 height=200 crop="" %}
         {% cloudinary product.image2 format="jpg" width=300 height=200 crop="" %}
         {% cloudinary product.image3 format="jpg" width=300 height=200 crop="" %}
+    </div><br><br>
+    <hr>
+    <div>
+        <h2 class="information">CUSTOMER FEEDBACK</h2><br>
+                <a href="" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Feedback</a>
+        <div class="modal fade bd-example-modal-xl" id="ModalCenter" tabindex="-1" role="dialog"
+             aria-labelledby="exampleModalCenterTitle"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content modalcard">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add a Business</h5>
+                        <button type="button" class="close" data-dismiss="modal" id="mod_cls" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="" method="post"  id="Q_A" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% bootstrap_form form%}
+                            <input type="submit" class="btn btn-sm btn-info" value="Post">
+                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">Close
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            {% for feedback in feedbacks %}
+            <div class="col-sm-6 col-lg-12 hoods">
+                <h2 class="text-center highlight">{{feedback.title}}</h2>
+                <p class="information">{{feedback.feedback}}</p>
+                <p class="information">Posted on {{feedback.date}} ~ by <span class="highlight">{{feedback.user.username}}</span></p> 
+            </div>
+            {% endfor %}
+        </div>
+
     </div>
 
 </div>

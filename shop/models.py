@@ -82,4 +82,18 @@ class Product(models.Model):
         return cls.objects.filter(name__icontains=name).all()
 
 
+class Feedback(models.Model):
+    title = models.CharField(max_length=100, null=True)
+    feedback = models.TextField()
+    date = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, related_name='feedback_owner')
+    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE, related_name='product_feedback')
+
+    class Meta:
+       ordering = ['-date']
+
+    def __str__(self):
+        return self.title
+
+
     

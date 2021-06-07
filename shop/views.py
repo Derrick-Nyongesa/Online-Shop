@@ -45,8 +45,20 @@ def category(request, category):
 
 def product(request, id):
     product = Product.objects.get(id=id)
+    current_user = request.user
+    feedbacks = Feedback.objects.filter(product=product)
+    if request.method == 'POST':
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            p_form = form.save(commit=False)
+            p_form.product = product
+            p_form.user = current_user
+            p_form.save()
+            return redirect('product', product.id)
+    else:
+        form = FeedbackForm()
     
-    return render(request, 'product.html', {'product': product})
+    return render(request, 'product.html', {'product': product, 'form': form, 'feedbacks':feedbacks})
 
 
 @login_required(login_url='/accounts/login/')

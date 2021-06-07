@@ -35,8 +35,15 @@ def edit_profile(request, username):
 
     return render(request, 'update_profile.html', {'user_form': user_form, 'prof_form': prof_form})
 
+@login_required(login_url='/accounts/login/')
 def category(request, category):
     products = Product.filter_by_category(category)
     print(products)
     title = "By Category"
     return render(request, 'category.html', {'products': products, "title":title})
+
+
+def product(request, id):
+    product = Product.objects.get(id=id)
+    
+    return render(request, 'product.html', {'product': product})

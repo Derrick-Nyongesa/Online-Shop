@@ -77,5 +77,9 @@ class Product(models.Model):
         product = Product.objects.filter(category__name=category).all()
         return product
 
+    @classmethod
+    def search_product(cls, name):
+        return cls.objects.filter(name__icontains=name).all()
+
 
     

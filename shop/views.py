@@ -47,3 +47,17 @@ def product(request, id):
     product = Product.objects.get(id=id)
     
     return render(request, 'product.html', {'product': product})
+
+
+@login_required(login_url='/accounts/login/')
+def search(request):
+    if request.method == 'GET':
+        name = request.GET.get("name")
+        results = Product.objects.filter(name__icontains=name).all()
+        print(results)
+        message = f'name'
+        
+        return render(request, 'results.html', {'results':results, 'message': message})
+    else:
+        message = "You haven't searched for any product"
+    return render(request, 'results.html', {'message': message})

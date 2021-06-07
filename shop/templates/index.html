@@ -4,5 +4,14 @@
 
 {% block content %}
 <h1>Online Shop</h1>
+<div class="container">
+    <div class="row">
+        {% for product in products %}
+        <div class="col-sm-12 col-md-12 col-lg-5 card mb-4">
+            <h2>{{product.name}}</h2>
+        </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
 

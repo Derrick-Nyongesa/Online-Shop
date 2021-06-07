@@ -101,4 +101,21 @@ class SubscriptionRecipients(models.Model):
     email = models.EmailField()
 
 
-    
+class Cart(models.Model):
+    quantity = models.IntegerField(default=1)
+    purchased = models.BooleanField(default=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    product = models.ForeignKey(Product, null=True, on_delete=models.CASCADE)
+
+    @classmethod
+    def in_cart(cls, product, user):
+        return Cart.objects.filter(product=product, user=user, purchased=False).exists()
+
+    @classmethod
+    def get_user_cart(cls, user):
+        return Cart.objects.filter(user=user).all()
+
+    @classmethod
+    def add_product(cls, product, user):
+        if not Cart.objects.filter(product=product, user=user, purchased=False).exists():
+            Cart.objects.create(product=product, user=user)

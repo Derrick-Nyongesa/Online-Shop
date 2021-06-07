@@ -14,7 +14,9 @@
                 <h3 class="highlight">{{product.name}}</h3>
                 <h5>Brand: <strong>{{product.Brand}}</strong></h5>
                 <h2 class="text-center"><strong>Ksh. {{product.price}}</strong> </h2>
-                <a href="" class="btn btn-outline-info">Add to Cart</a>
+                {% if not in_cart %}
+                    <a href="{% url 'add_cart' product.id %}" class="btn btn-outline-info">Add to Cart</a>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -41,7 +43,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content modalcard">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Add a Business</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Add Feedback</h5>
                         <button type="button" class="close" data-dismiss="modal" id="mod_cls" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>

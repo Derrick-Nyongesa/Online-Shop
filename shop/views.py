@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.http import HttpResponse,Http404,HttpResponseRedirect
 from .email import send_welcome_email
+from django.contrib import messages
+from .models import Cart, Product, Profile, Feedback
 
 # Create your views here.
 @login_required (login_url='/accounts/login/')
@@ -59,6 +61,7 @@ def category(request, category):
 def product(request, id):
     product = Product.objects.get(id=id)
     current_user = request.user
+    in_cart = Cart.in_cart(product, current_user)
     feedbacks = Feedback.objects.filter(product=product)
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
@@ -71,7 +74,7 @@ def product(request, id):
     else:
         form = FeedbackForm()
     
-    return render(request, 'product.html', {'product': product, 'form': form, 'feedbacks':feedbacks})
+    return render(request, 'product.html', {'product': product, 'form': form, 'feedbacks':feedbacks, 'in_cart': in_cart})
 
 
 @login_required(login_url='/accounts/login/')
@@ -86,3 +89,19 @@ def search(request):
     else:
         message = "You haven't searched for any product"
     return render(request, 'results.html', {'message': message})
+
+
+
+@login_required(login_url='/accounts/login/')
+def cart(request):
+    cart_items = Cart.get_user_cart(request.user)
+
+    return render(request, "cart.html")
+
+    
+
+@login_required(login_url='/accounts/login/')
+def add(request, id):
+    product = Product.objects.get(id=id)
+    Cart.add_product(product, request.user)
+    return redirect("product", id)

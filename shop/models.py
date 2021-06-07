@@ -52,4 +52,15 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    @classmethod
+    def all_products(cls):
+        return cls.objects.all()
+
+    def save_product(self):
+        self.save()
+
+    def delete_product(self):
+        self.delete()
+
+
     

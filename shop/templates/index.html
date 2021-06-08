@@ -5,19 +5,20 @@
 
 {% block content %}
 <div class="container">
-    <h1 class="text-center">Online Shopping with Albany Kenya - Kenya's No 1 Online Store</h1>
+    <br><h1 class="text-center font-weight-bold">Online Shopping with Albany e-Store - Kenya's No 1 Online Store</h1><br>
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-4">
-            <h5 class="text-center">SUBSCRIBE to Albany eShop</h5>
+        <div class="col-sm-12 col-md-12 col-lg-3 newsletter">
+            <p class="text-center text-light">Subscribe to our newsletter to get updates on our latest offers!
+            </p>
             <form  action="{%url 'homePage'%}" method="post">
                 {%csrf_token%}
             
                 {% bootstrap_form form layout='inline' %}
-                <input type="submit" value="Subscribe">
+                <input class="btn btn-dark btn-sm" type="submit" value="Subscribe">
             </form>
         </div>
-        <div class="col-md-12 col-lg-8">
-            <div class="categories">
+        <div class="col-md-12 col-lg-9">
+            <div class="categories bg-info">
                 {% for category in categories %}
                 <a class="btn btn-outline-danger"
                     href="/category/{{category.name}}">{{category.name}}</a>
@@ -29,18 +30,18 @@
     <hr>
    
     <div class="container">
-        <div class="row">
+        <br><div class="row">
             {% for product in products %}
-            <a href="{% url 'product' product.id %}">
-                <div class="col-sm-12 col-md-12 col-lg-5 card mb-4 products">
+            <a href="{% url 'product' product.id %}" class="productcard">
+                <div class="col-sm-12 col-md-6 col-lg-4 card mb-4">
                     {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
-                    <h5 class="highlight"><a href="{% url 'product' product.id %}">{{product.name}}</a></a></h5>
+                    <h5 class="text-info font-weight-bold"><a href="{% url 'product' product.id %}" class="products">{{product.name}}</a></h5>
                     <h6 class="white">Ksh. <strong>{{product.price}}</strong></h6>
                 </div>
-            </a>
             
+            </a>
             {% endfor %}
-        </div>
+        </div><br>
     </div>
     
 </div>

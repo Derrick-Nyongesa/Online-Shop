@@ -9,7 +9,7 @@ body{
 }
 
 .categories{
-    background-color: #4cc9f0;
+   
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 200px;
@@ -22,8 +22,9 @@ body{
     color: #e5383b;
 }
 
-.products{
-    margin: 40px;
+.products:hover{
+    color: #e5383b;
+    text-decoration: none;
 }
 
 hr{
@@ -49,4 +50,14 @@ h2{
 
 li{
     list-style: none;
+}
+
+.newsletter{
+    background-color: #e5383b;
+    padding: 10px 5px;
+    border-radius: 10px;
+}
+
+.productcard:hover{
+    opacity: 0.3;
 }

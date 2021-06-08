@@ -147,5 +147,6 @@ def payment(request):
 
 @login_required(login_url='/accounts/login/')
 def success(request):
+    Cart.objects.all().delete()
 
     return render(request, 'success.html')

@@ -4,24 +4,23 @@
 {% load cloudinary %}
 
 {% block content %}
-<div class="container">
+<div class="">
     {% if results %}
-        <h2 class="highlight text-center">Found {{results.count}} items</h2>
-        
-    {{ message }}
-    
+        <br><h2 class="highlight text-center">Found {{results.count}} item(s)</h2>
 
-        <div class="row">
+        <br><div class="row">
+        <div class="container">
             {% for product in results %}
-            <a href="{% url 'product' product.id %}">
-                <div class="col-sm-12 col-md-12 col-lg-5 card mb-4 products">
+            <a href="{% url 'product' product.id %}" class="productcard">
+                <div class="col-sm-12 col-md-6 col-lg-4 card mb-4">
                     {% cloudinary product.image format="jpg" width=300 height=200 crop="" %}
-                    <h5 class="highlight"><a href="{% url 'product' product.id %}">{{product.name}}</a></a></h5>
+                    <h5 class="text-info font-weight-bold"><a href="{% url 'product' product.id %}" class="products">{{product.name}}</a></h5>
                     <h6 class="white">Ksh. <strong>{{product.price}}</strong></h6>
                 </div>
+            
             </a>
             {% endfor %}
-        
+        </div>
         
         {% else %}
             <h2 class="highlight text-center">Found 0 items with the name you searched </h2>

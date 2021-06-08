@@ -22,6 +22,7 @@ def index(request):
             recipient = SubscriptionRecipients(name = name,email =email)
             recipient.save()
             send_welcome_email(name,email)
+            messages.info(request, 'Suscribed!!')
             HttpResponseRedirect('homePage')
     else:
         form = SubscriptionForm()

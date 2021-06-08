@@ -95,8 +95,12 @@ def search(request):
 @login_required(login_url='/accounts/login/')
 def cart(request):
     cart_items = Cart.get_user_cart(request.user)
+    
+    total=0
+    for product in cart_items:
+        total = total + product.product.price
 
-    return render(request, "cart.html")
+    return render(request, "cart.html", {'cart_items':cart_items,'total':total})
 
     
 
@@ -105,3 +109,9 @@ def add(request, id):
     product = Product.objects.get(id=id)
     Cart.add_product(product, request.user)
     return redirect("product", id)
+
+@login_required(login_url='/accounts/login/')
+def remove(request, id):
+    product = Product.objects.get(id=id)
+    Cart.remove_product(product, request.user)
+    return redirect("cart")

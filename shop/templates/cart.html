@@ -5,5 +5,35 @@
 
 {% block content %}
 
-  
+<div class="container">
+        <br><table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">ITEM</th>
+      <th scope="col">IMAGE</th>
+      <th scope="col">PRICE</th>
+      <th scope="col">REMOVE</th>
+    </tr>
+  </thead>
+  {% for product in cart_items %}
+  <tbody>
+    <tr>
+      
+      <td>{{product.product.name}}</td>
+      <td>{% cloudinary product.product.image format="jpg" width=50 height=50 crop="" %}</td>
+      <td>{{product.product.price}}</td>
+      <td><a class="btn btn-danger btn-xs" href="{% url 'remove' product.product.id  %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+    </tr>
+    
+  </tbody>
+  {% endfor %}
+</table>
+<br><br><br>
+<div style="text-align: center;">
+  <button class="btn btn-outline-danger btn-lg">Total {{total}}</button>
+  <a href=""><button class="btn btn-primary" ><span>Proceed to Checkout </span></button></a><br><br>
+</div>
+
+</div>
 {% endblock %}

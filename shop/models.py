@@ -119,3 +119,10 @@ class Cart(models.Model):
     def add_product(cls, product, user):
         if not Cart.objects.filter(product=product, user=user, purchased=False).exists():
             Cart.objects.create(product=product, user=user)
+
+    @classmethod
+    def remove_product(cls, product, user):
+        if Cart.objects.filter(product=product, user=user, purchased=False).exists():
+            Cart.objects.filter(product=product, user=user).delete()
+
+    

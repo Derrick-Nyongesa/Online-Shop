@@ -2,7 +2,7 @@
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
-from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.http import HttpResponse,Http404,HttpResponseRedirect, request
 from .email import send_welcome_email
 from django.contrib import messages
 from .models import Cart, Product, Profile, Feedback
@@ -122,3 +122,29 @@ def remove(request, id):
     product = Product.objects.get(id=id)
     Cart.remove_product(product, request.user)
     return redirect("cart")
+
+
+@login_required(login_url='/accounts/login/')
+def payment(request):
+    current_user = request.user
+    if request.method == 'POST':
+        form = PaymentForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
+            email = form.cleaned_data['email']
+            card_number = form.cleaned_data['card_number']
+            #form = form.save(commit=False)
+            #form.user = current_user
+            customers = Payment(first_name = first_name, last_name = last_name, email =email, card_number=card_number)
+            customers.save()
+            return redirect('success')
+    else:
+        form = PaymentForm()
+    return render(request, 'payment.html', {'form': form})
+
+
+@login_required(login_url='/accounts/login/')
+def success(request):
+
+    return render(request, 'success.html')

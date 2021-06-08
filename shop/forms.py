@@ -25,3 +25,10 @@ class FeedbackForm(forms.ModelForm):
 class SubscriptionForm(forms.Form):
     name = forms.CharField(label='Name', max_length=50)
     email = forms.EmailField(label='Email')
+
+
+class PaymentForm(forms.Form):
+    first_name = forms.CharField(label='First Name', max_length=50)
+    last_name = forms.CharField(label='Last Name', max_length=50)
+    email = forms.EmailField(label='Email')
+    card_number = forms.IntegerField(label='Card Number')

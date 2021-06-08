@@ -125,4 +125,11 @@ class Cart(models.Model):
         if Cart.objects.filter(product=product, user=user, purchased=False).exists():
             Cart.objects.filter(product=product, user=user).delete()
 
+
+class Payment(models.Model):
+    first_name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=50)
+    email = models.EmailField()
+    card_number = models.IntegerField()
+
     

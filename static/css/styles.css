@@ -59,3 +59,12 @@ li{
 .productcard:hover{
     opacity: 0.3;
 }
+
+
+.pay-form{
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    border: #e5383b solid 5px;
+    padding: 50px;
+}

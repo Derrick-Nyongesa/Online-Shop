@@ -33,3 +33,4 @@ class PaymentForm(forms.Form):
     email = forms.EmailField(label='Email')
     address = forms.CharField(label='Address', max_length=100)
     card_number = forms.IntegerField(label='Card Number')
+

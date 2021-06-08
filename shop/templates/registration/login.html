@@ -1,11 +1,16 @@
 {%extends "django_registration/base.html"%}
 {% load bootstrap4 %}
+{% load static %}
+
 {% block content %}
-<div class="container">
+<div class="">
+
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
+    
+    <div class="col-md-6 left">
+    <br><h1><span class="highlight">ALBANY e-Store</span></h1>
+    <p class="text-light text-center">Online Shopping with Albany e-Store - Kenya's No 1 Online Store</p>
       {% if form.errors %}
         <p> Password or Username is incorrect </p>
       {% endif %}
@@ -13,36 +18,46 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Sign In</h3>
+          <h3 class=" text-light text-center">Log In</h3>
         </div>
         <div class="panel-body">
 
           <form  action="/accounts/login/" method="post">
             {% csrf_token %}
-            {% bootstrap_form form%}
+            {% bootstrap_form form layout='inline'%}
 
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Login">
+              <input type="submit" class="primary-btn" value="Login">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
 
           </form>
 
-          <div>
-            <h3>Don't have an Account?</h3>
-          </div>
+          <div class="or">
+                    <hr class="bar">
+                    <span class="text-info">New User?</span>
+                    <hr class="bar">
+                </div>
           <a href="/accounts/register">
-            <input type="click" name="" value="Register" class="btn btn-primary btn-block">
+            <input type="click" name="" value="Create an Account" class="btn btn-outline-info btn-block">
           </a>
 
         </div>
 
-      </div>
+      </div><br><br>
+      <footer id="main-footer">
+                <p>Copyright &copy; 2021, Albany eStore All Rights Reserved</p>
+                <div>
+                    <a href="#">Terms of Use</a> | <a href="#">Privacy Policy</a>
+                </div>
+            </footer>
 
     </div>
     <!-- empty div -->
-    <div class="col-md-4"></div>
+    <div class="col-md-6 showcase">
+      
+    </div>
   </div>
 </div>
 

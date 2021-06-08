@@ -3,7 +3,7 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from django.http import HttpResponse,Http404,HttpResponseRedirect, request
-from .email import send_welcome_email
+from .email import send_welcome_email, payment_recieved_email
 from django.contrib import messages
 from .models import Cart, Product, Profile, Feedback
 
@@ -138,6 +138,7 @@ def payment(request):
             #form.user = current_user
             customers = Payment(first_name = first_name, last_name = last_name, email =email, card_number=card_number)
             customers.save()
+            payment_recieved_email(first_name,email)
             return redirect('success')
     else:
         form = PaymentForm()

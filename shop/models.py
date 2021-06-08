@@ -130,6 +130,7 @@ class Payment(models.Model):
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField()
+    address = models.CharField(max_length=100, null=True)
     card_number = models.IntegerField()
 
     

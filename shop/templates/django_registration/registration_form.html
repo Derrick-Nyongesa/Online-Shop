@@ -1,10 +1,10 @@
 {%extends "django_registration/base.html"%} 
 {% load bootstrap4 %}
 {% block content %}
-<div class="container">
+<div class="">
   <div class="row">
     <!-- Empty div -->
-    <div class="col-md-4"></div>
+    
     <div class="col-md-4">
       {% if form.errors %}
         <p> Some Information Might be Incorrect </p>
@@ -12,15 +12,15 @@
       <div class="panel panel-default">
 
         <div class="panel-heading">
-          <h3 class="text-center">Sign Up</h3>
+          <br><h3 class="text-center text-light font-weight-bold">Sign Up</h3>
         </div>
         <div class="panel-body">
 
-          <form  action="/accounts/register/" method="post">
+          <form  action="/accounts/register/" method="post" class="r-form">
             {% csrf_token %}
             {% bootstrap_form form %}
             <div class="form-group">
-              <input type="submit" class="btn btn-primary btn-sm" value="Sign Up">
+              <input type="submit" class="primary-btn" value="Sign Up">
             </div>
 
             <input type="hidden" name="next" value="{{next}}">
@@ -33,7 +33,7 @@
 
     </div>
     <!-- empty div -->
-    <div class="col-md-4"></div>
+    <div class="col-md-8 showcase"></div>
   </div>
 </div>
 

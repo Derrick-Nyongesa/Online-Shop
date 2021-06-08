@@ -4,68 +4,20 @@
 {% load cloudinary %}
 
 {% block content %}
-<style media="screen">
-    
-    .button {
-    display: inline-block;
-    border-radius: 4px;
-    background-color: #f4511e;
-    border: none;
-    color: #FFFFFF;
-    text-align: center;
-    font-size: 28px;
-    padding: 20px;
-    width: 200px;
-    transition: all 0.5s;
-    cursor: pointer;
-    margin: 5px;
-    }
-  
-    .button span {
-    cursor: pointer;
-    display: inline-block;
-    position: relative;
-    transition: 0.5s;
-    }
-  
-    .button span:after {
-    content: '\00bb';
-    position: absolute;
-    opacity: 0;
-    top: 0;
-    right: -20px;
-    transition: 0.5s;
-    }
-  
-    .button:hover span {
-    padding-right: 25px;
-    }
-  
-    .button:hover span:after {
-    opacity: 1;
-    right: 0;
-    }
-  
-  
-  </style>
-  <br><br><br>
-  <div style="padding-left:300px;" class="container">
-  
-          <div class="col-sm-2 col-md-2">
-            <span>{% cloudinary user.profile.profile_picture format="jpg" width=180 height=180 crop="fill"  %}</span>
-          </div>
-          <div class="col-sm-4 col-md-4">
-              <blockquote>
-                  <p>{{request.user}}</p> <small><cite title="Source Title">{{user.profile.location}} <i class="glyphicon glyphicon-map-marker"></i></cite></small>
-              </blockquote>
-              <p> <i class="glyphicon glyphicon-phone"></i>{{user.profile.phone_number}}
-              </p>
-          </div>
-  
+<div class="container">
+  <br><div class="row">
+    <div class="col-md-12 col-lg-4"></div>
+      <div class="col-md-12 col-lg-4">
+        <span>{% cloudinary user.profile.profile_picture format="jpg" width=180 height=180 crop="fill"  %}</span>
+        <br><h4 class="name highlight">{{user.username}}</h4>
+        <p class="text-light"> {{user.email}}</p>
+        <p class="text-light"> {{user.profile.phone_number}}</p>
+        <p class="text-light font-weight-bold">{{ user.profile.location }}</p>
+        <a href="{% url 'update' user.username  %}" class="btn btn-warning btn-lg">Update profile</a>
+      </div>
+    <div class="col-md-12 col-lg-4"></div>
   </div>
-  <br>
-  <div style="text-align: center;">
-    <a href="{% url 'update' user.username  %}"><button class="button" ><span>Update Profile </span></button></a>
-  </div>
-  <br><br><br><br><br><br>
+  <hr>
+  
+</div>
 {% endblock %}

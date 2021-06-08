@@ -22,11 +22,11 @@
     </div>
 </div>
 
-<div class="container">
-    <h2 class="information">PRODUCT DETAILS</h2><br>
-    <p class="information">{{product.description}}</p><br><br><br>
-    <h2 class="information">TECHNICAL SPECIFICATIONS</h2>
-    <p class="information">{{product.Specifications}}</p>
+<br><br><div class="container">
+    <h2 class="text-light">PRODUCT DETAILS</h2>
+    <p class="text-light">{{product.description}}</p><br><br><br>
+    <h2 class="text-light">TECHNICAL SPECIFICATIONS</h2>
+    <p class="text-light">{{product.Specifications}}</p>
     <hr>
     <div>
         {% cloudinary product.image1 format="jpg" width=300 height=200 crop="" %}
@@ -35,7 +35,7 @@
     </div><br><br>
     <hr>
     <div>
-        <h2 class="information">CUSTOMER FEEDBACK</h2><br>
+        <h2 class="text-light">CUSTOMER FEEDBACK</h2><br>
                 <a href="" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Feedback</a>
         <div class="modal fade bd-example-modal-xl" id="ModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle"
@@ -64,9 +64,9 @@
         <div class="row">
             {% for feedback in feedbacks %}
             <div class="col-sm-6 col-lg-12 hoods">
-                <h2 class="text-center highlight">{{feedback.title}}</h2>
-                <p class="information">{{feedback.feedback}}</p>
-                <p class="information">Posted on {{feedback.date}} ~ by <span class="highlight">{{feedback.user.username}}</span></p> 
+                <h2 class="text-center text-info">{{feedback.title}}</h2>
+                <p class="text-light">{{feedback.feedback}}</p>
+                <p class="text-light">Posted on {{feedback.date}} ~ by <span class="text-info">{{feedback.user.username}}</span></p> 
             </div>
             {% endfor %}
         </div>

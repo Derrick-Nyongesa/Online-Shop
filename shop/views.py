@@ -13,6 +13,7 @@ def index(request):
     products = Product.objects.all()
     categories = Category.get_categories()
     title = "Home"
+    cart_items = Cart.get_user_cart(request.user)
     if request.method == 'POST':
         form = SubscriptionForm(request.POST)
         if form.is_valid():
@@ -25,18 +26,20 @@ def index(request):
     else:
         form = SubscriptionForm()
 
-    return render(request, 'index.html', {'products':products, "title":title, 'categories':categories,'form':form})
+    return render(request, 'index.html', {'products':products, "title":title, 'cart_items':cart_items,'categories':categories,'form':form})
 
 
 @login_required(login_url='/accounts/login/')
 def profile(request, username):
+    cart_items = Cart.get_user_cart(request.user, )
 
-    return render(request, 'profile.html')
+    return render(request, 'profile.html',{'cart_items':cart_items})
 
 
 @login_required(login_url='/accounts/login/')
 def edit_profile(request, username):
     user = User.objects.get(username=username)
+    
     if request.method == 'POST':
         user_form = UserForm(request.POST, instance=request.user)
         prof_form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
@@ -47,15 +50,17 @@ def edit_profile(request, username):
     else:
         user_form = UserForm(instance=request.user)
         prof_form = ProfileForm(instance=request.user.profile)
+        cart_items = Cart.get_user_cart(request.user)
 
-    return render(request, 'update_profile.html', {'user_form': user_form, 'prof_form': prof_form})
+    return render(request, 'update_profile.html', {'user_form': user_form, 'prof_form': prof_form, 'cart_items':cart_items})
 
 @login_required(login_url='/accounts/login/')
 def category(request, category):
     products = Product.filter_by_category(category)
     print(products)
     title = "By Category"
-    return render(request, 'category.html', {'products': products, "title":title})
+    cart_items = Cart.get_user_cart(request.user)
+    return render(request, 'category.html', {'products': products, "title":title, 'cart_items':cart_items,})
 
 
 def product(request, id):
@@ -63,6 +68,7 @@ def product(request, id):
     current_user = request.user
     in_cart = Cart.in_cart(product, current_user)
     feedbacks = Feedback.objects.filter(product=product)
+    cart_items = Cart.get_user_cart(request.user)
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -74,7 +80,7 @@ def product(request, id):
     else:
         form = FeedbackForm()
     
-    return render(request, 'product.html', {'product': product, 'form': form, 'feedbacks':feedbacks, 'in_cart': in_cart})
+    return render(request, 'product.html', {'product': product, 'form': form, 'feedbacks':feedbacks, 'cart_items':cart_items, 'in_cart': in_cart})
 
 
 @login_required(login_url='/accounts/login/')
@@ -83,9 +89,10 @@ def search(request):
         name = request.GET.get("name")
         results = Product.objects.filter(name__icontains=name).all()
         print(results)
+        cart_items = Cart.get_user_cart(request.user)
         message = f'found results'
         
-        return render(request, 'results.html', {'results':results, 'message': message})
+        return render(request, 'results.html', {'results':results, 'message': message, 'cart_items':cart_items})
     else:
         message = "You haven't searched for any product"
     return render(request, 'results.html', {'message': message})

@@ -12,7 +12,7 @@ body{
    
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-left: 200px;
+    padding-left: 50px;
     margin-top: 50px;
     margin-bottom: 50px;
 }
@@ -84,3 +84,6 @@ li{
     font-size: 18px;
 }
 
+.category{
+    margin: 3px;
+}

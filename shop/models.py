@@ -56,12 +56,7 @@ class Product(models.Model):
     image3= CloudinaryField('image',null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,default='')
-    score = models.IntegerField(default=0,
-        validators=[
-            MaxValueValidator(5),
-            MinValueValidator(0),
-        ]
-    )
+    
 
     class Meta:
        ordering = ['-date']
@@ -140,4 +135,3 @@ class Payment(models.Model):
     address = models.CharField(max_length=100, null=True)
     card_number = models.IntegerField()
 
-    

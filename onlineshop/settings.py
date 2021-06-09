@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'shop',
     'bootstrap4',
     'cloudinary',
+    'star_ratings'
 ]
 
 MIDDLEWARE = [

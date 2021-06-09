@@ -155,14 +155,3 @@ def success(request):
 
     return render(request, 'success.html')
 
-
-def rate_product(request):
-    if request.method == 'POST':
-        el_id = request.POST.get('el_id')
-        val = request.POST.get('val')
-        print(val)
-        obj = Product.objects.get(id=el_id)
-        obj.score = val
-        obj.save()
-        return JsonResponse({'success':'true', 'score': val}, safe=False)
-    return JsonResponse({'success':'false'})

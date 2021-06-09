@@ -1,4 +1,4 @@
-# Independent Project - Albany eStore
+# Capstone Project - Albany Electronics' eStore
 
 This is a Django project was generated with [Python](https://www.python.org/) version 3.9
 

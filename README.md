@@ -8,7 +8,7 @@ Derrick Nyongesa
 
 
 ## Description
-This is a django application that allows authenticated customers to shop for electronic devices from the comfort of their homes/offices without physically travelling to the store. The application displays a range of electronic devices according to their categories and the customer will receive an email upon successful payment.
+This is a django application that allows authenticated customers to shop for electronic devices from the comfort of their homes/offices without physically travelling to the store. A new customer can subscribe to the site, choose product(s) of their choice and add to the cart, checkout and input shipping information on a form. The customer can also rate the purchased product and provide feedback on the site.
 
 
 ## MOCKUP DESIGN

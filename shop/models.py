@@ -3,6 +3,7 @@ from cloudinary.models import CloudinaryField
 from django.contrib.auth.models import User
 from django.dispatch import receiver
 from django.db.models.signals import post_save
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 class Profile(models.Model):
@@ -55,6 +56,12 @@ class Product(models.Model):
     image3= CloudinaryField('image',null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey(Category,on_delete=models.CASCADE,default='')
+    score = models.IntegerField(default=0,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(0),
+        ]
+    )
 
     class Meta:
        ordering = ['-date']

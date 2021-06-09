@@ -1,4 +1,5 @@
 
+from django.http.response import JsonResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth.decorators import login_required
 from .forms import *
@@ -70,6 +71,8 @@ def product(request, id):
     in_cart = Cart.in_cart(product, current_user)
     feedbacks = Feedback.objects.filter(product=product)
     cart_items = Cart.get_user_cart(request.user)
+    #obj = Product.objects.filter(score=0).order_by("?").first()
+    
     if request.method == 'POST':
         form = FeedbackForm(request.POST)
         if form.is_valid():
@@ -151,3 +154,15 @@ def success(request):
     Cart.objects.all().delete()
 
     return render(request, 'success.html')
+
+
+def rate_product(request):
+    if request.method == 'POST':
+        el_id = request.POST.get('el_id')
+        val = request.POST.get('val')
+        print(val)
+        obj = Product.objects.get(id=el_id)
+        obj.score = val
+        obj.save()
+        return JsonResponse({'success':'true', 'score': val}, safe=False)
+    return JsonResponse({'success':'false'})

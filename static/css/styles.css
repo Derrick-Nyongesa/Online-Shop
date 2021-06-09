@@ -1,5 +1,5 @@
 h1{
-    color: #e5383b;
+    color: #dc2f02;
     font-weight: bold;
     text-transform: uppercase;
 }
@@ -19,16 +19,16 @@ body{
 
 .highlight{
     font-weight: bold;
-    color: #e5383b;
+    color: #dc2f02;
 }
 
 .products:hover{
-    color: #e5383b;
+    color: #dc2f02;
     text-decoration: none;
 }
 
 hr{
-    border-color: #e5383b;
+    border-color: #dc2f02;
 
 }
 
@@ -51,7 +51,7 @@ li{
 }
 
 .newsletter{
-    background-color: #e5383b;
+    background-color: #dc2f02;
     padding: 10px 5px;
     border-radius: 10px;
 }
@@ -65,23 +65,22 @@ li{
     background-color: black;
     color: white;
     font-weight: bold;
-    border: #e5383b solid 5px;
+    border: #dc2f02 solid 5px;
     padding: 50px;
 }
 
 .u-profile{
     color: white;
     font-weight: bold;
-    border: #e5383b solid 5px;
+    border: #dc2f02 solid 5px;
     padding: 50px;
 }
 
-.checked {
-    color: red;
+.modalcard{
+    background-color:rgba(66, 63, 63, 0.8);
+    color:white;
+    padding:3%;
+    border:none;
+    font-size: 18px;
 }
-
-/*.my-btn {
-    background-color: inherit !important;
-    border: 0 !important;
-}*/
 

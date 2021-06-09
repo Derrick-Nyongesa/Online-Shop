@@ -34,7 +34,11 @@
         {% cloudinary product.image2 format="jpg" width=300 height=200 crop="" %}
         {% cloudinary product.image3 format="jpg" width=300 height=200 crop="" %}
     </div><br><br>
+    <div class="highlight lead">
+    <h2 class="text-light">Rate the Product</h2>
     {% ratings product %}
+    </div>
+    
     <hr>
     <div>
         <h2 class="text-light">CUSTOMER FEEDBACK</h2><br>
@@ -42,8 +46,8 @@
         <div class="modal fade bd-example-modal-xl" id="ModalCenter" tabindex="-1" role="dialog"
              aria-labelledby="exampleModalCenterTitle"
              aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content modalcard">
+            <div class="modal-dialog modal-dialog-centered model" role="document">
+                <div class="modal-content modalcard modalcard">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Add Feedback</h5>
                         <button type="button" class="close" data-dismiss="modal" id="mod_cls" aria-label="Close">

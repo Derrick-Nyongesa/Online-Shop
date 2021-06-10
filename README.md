@@ -1,4 +1,4 @@
-# Capstone Project - Albany Electronics' eStore
+# Capstone Project - Albany Electronics' Online Store
 
 This is a Django project was generated with [Python](https://www.python.org/) version 3.9
 
@@ -8,7 +8,7 @@ Derrick Nyongesa
 
 
 ## Description
-This is a django application that allows authenticated customers to shop for electronic devices from the comfort of their homes/offices without physically travelling to the store. A new customer can subscribe to the site, choose product(s) of their choice and add to the cart, checkout and input shipping information on a form. The customer can also rate the purchased product and provide feedback on the site.
+This is a django application that allows authenticated customers to shop virtually using the internet and to allow customers to buy electronic items of their choice from the store. A new customer can subscribe to the site, choose product(s) of their choice and add to the cart, checkout and input shipping information on a form. The customer can also rate the purchased product and provide feedback on the site. This is a demo project and should not be used foe commercial purposes.
 
 
 ## MOCKUP DESIGN
@@ -16,6 +16,15 @@ This is a django application that allows authenticated customers to shop for ele
 
 
 ## Entity relationship diagram 
+![ERD - Page 1](https://user-images.githubusercontent.com/78686755/121508554-6511d900-c9ee-11eb-859b-72cb79c20547.png)
+
+
+## USER STORY
+1. The customer should login/register before using the application
+2. The customer should view items in categories and be able to search for items.
+3. The customer should be able to put items in a virtual cart and complete the purchase at a later time.
+4. The customer should receive an email notification upon successful completion of the purchase.
+5. The customer can provide feedback and rate the purchased item.
 
 
 
